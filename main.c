@@ -14,6 +14,7 @@ int main()
     s.top = 0;
     printf("%c\n",pop(&s));
     printf("awdwadawd\n");
-    printf("git checkout -b") // sai da branch atual e cria uma nova
+    printf("git checkout -b"); // sai da branch atual e cria uma nova
+    printf("git checkout -b"); // NÃO DE NO ORIGIN MAIN
     return 0;
 }
