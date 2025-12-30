@@ -6,7 +6,6 @@
 #include "src/Bibliotecas/garrafas.h"
 
 
-
 int main()
 {
     garrafa s[3];
