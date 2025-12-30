@@ -15,6 +15,8 @@ int main()
     printf("%c\n",pop(&s));
     printf("awdwadawd\n");
     printf("git checkout -b"); // sai da branch atual e cria uma nova
+    printf("git switch nome da branch"); // troca de branch
+    printf("git switch nome da branch"); // troca de branch
     printf("git checkout -b"); // NÃO DE NO ORIGIN MAIN
     return 0;
 }
