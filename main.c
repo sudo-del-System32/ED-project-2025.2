@@ -14,5 +14,6 @@ int main()
     s.top = 0;
     printf("%c\n",pop(&s));
     printf("awdwadawd\n");
+    printf("git checkout -b") // sai da branch atual e cria uma nova
     return 0;
 }
