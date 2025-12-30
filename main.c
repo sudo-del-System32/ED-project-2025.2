@@ -13,6 +13,5 @@ int main()
     s.qnt = 0;
     s.top = 0;
     printf("%c\n",pop(&s));
-    printf("awdwadawd\n");
     return 0;
 }

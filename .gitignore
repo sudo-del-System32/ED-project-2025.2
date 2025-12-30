@@ -1,4 +1,4 @@
 main.exe
 .vscode
-build/Debug
-*.o
+build
+temp
