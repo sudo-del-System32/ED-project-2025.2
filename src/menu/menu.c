@@ -128,7 +128,6 @@ void gameMenu(garrafa *g)
                 break;
             }
             
-            printf("teste");
             opcaoValida = true;
             tranferirCor(&g[opcao%10 - 1], &g[opcao/10 - 1]);
             break;
