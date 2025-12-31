@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "../Bibliotecas/garrafas.h"
+#include "../Bibliotecas/cor.h"
  
 
 bool vazia(garrafa *g)
@@ -40,6 +41,20 @@ bool push(garrafa *g , char *cor){
     return true;
 }
 
-
+void desenhar(garrafa g[3]){
+    printf("\n       ( 1 )            ( 2 )            ( 3 )\n");
+    printf("       |   |            |   |            |   |\n");
+    for (int nivel = 2; nivel >= 0; nivel--) {
+        for (int i = 0; i < 3; i++) {
+            if (nivel < g[i].qnt) {
+                printf("    |%9s|  ", g[i].cores[nivel]);
+            } else {
+                printf("    |         |  ");
+            }
+        }
+        printf("\n");
+        printf("    '---------'      '---------'      '---------'\n");
+    }
+}
 
 
