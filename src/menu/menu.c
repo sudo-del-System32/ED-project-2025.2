@@ -69,12 +69,12 @@ void desenhar(garrafa s[])
 void gameMenu(garrafa *g)
 {
     int opcao;
-    bool opcaoValida = true, saida = false;
+    bool opcaoValida = true, saida = false, possivelErroDeSegmento = false;
     
     
     while(saida == false){
         desenhar(g);
-        if(saida == false)
+        if(saida == false && opcaoValida == true)
         {
             for(int i = 0; i <= NUM_DE_PILHAS - 1; i++)
             {
@@ -83,18 +83,22 @@ void gameMenu(garrafa *g)
             }
             if(saida == true) break;
         }
+
+
         printf("\n Digite a origem e o destino (ex: 13) ou '00' para sair:\n ");
         if(opcaoValida == false)
         { 
             
-            if(vazia(&g[opcao/10 - 1])) printf("             Erro:A garrafa %d esta vazia", opcao/10);
-            else if (cheia(&g[opcao%10 - 1]))  printf("             Erro: A garrafa %d esta cheia", opcao%10);
+            if(possivelErroDeSegmento == false && vazia(&g[opcao/10 - 1])) printf("             Erro:A garrafa %d esta vazia", opcao/10);
+            else if (possivelErroDeSegmento == false && cheia(&g[opcao%10 - 1]))  printf("             Erro: A garrafa %d esta cheia", opcao%10);
             else printf("\t\t Opcao invalida!\n\t\t Tente novamente");
             
             printf("\n");
             opcaoValida = true;
+            possivelErroDeSegmento = false; 
         }
         
+
         printf(">> ");
         scanf("%d", &opcao);
         bufferCleanner();
@@ -110,7 +114,12 @@ void gameMenu(garrafa *g)
 
             opcaoValida = false;
             //Verificaçao se a garrafa pode dar ou receber a cor.
-            if (vazia(&g[opcao/10 - 1])) 
+            if (opcao%10 < 1 || opcao%10 > NUM_DE_PILHAS || opcao/10 < 1 || opcao/10 > NUM_DE_PILHAS)
+            {
+                possivelErroDeSegmento = true;
+                break;
+            }
+            else if (vazia(&g[opcao/10 - 1])) 
             {
                 break;
             }
@@ -118,11 +127,8 @@ void gameMenu(garrafa *g)
             {
                 break;
             }
-            else if (opcao%10 < 1 || opcao%10 > NUM_DE_PILHAS || opcao/10 < 1 || opcao/10 > NUM_DE_PILHAS)
-            {
-                break;
-            }
             
+            printf("teste");
             opcaoValida = true;
             tranferirCor(&g[opcao%10 - 1], &g[opcao/10 - 1]);
             break;
