@@ -74,7 +74,7 @@ void gameMenu(garrafa *g)
     
     while(saida == false){
         desenhar(g);
-        if(saida == false && opcaoValida == true)
+        if(saida == false && possivelErroDeSegmento == false)
         {
             for(int i = 0; i <= NUM_DE_PILHAS - 1; i++)
             {
