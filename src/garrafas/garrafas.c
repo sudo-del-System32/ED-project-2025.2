@@ -67,4 +67,8 @@ void desenhar(garrafa g[3]) {
     }
 }
 
-
+void inicializar(garrafa *g) {
+    g->top = -1;
+    g->qnt = 0;
+}
+    
