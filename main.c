@@ -31,7 +31,7 @@ int main()
     
     gameMenu(g);
     
-    printf("GANHOU🎉🎉\n");
+    printf("\nGANHOU🎉🎉\n");
     return 0;
 }
 

@@ -79,7 +79,7 @@ void gameMenu(garrafa *g)
             for(int i = 0; i <= NUM_DE_PILHAS - 1; i++)
             {
                 saida = itensIguais(&g[i]);
-                if(saida == false) break;  
+                if(saida == false) break;
             }
             if(saida == true) break;
         }

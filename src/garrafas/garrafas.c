@@ -82,7 +82,8 @@ void copiarPilha(garrafa *g, garrafa *s)
 
 bool itensIguais(garrafa *g)
 {
-    if(cheia(g) != true && vazia(g) != true) return false;
+    if(vazia(g) == true) return true;
+    if(cheia(g) == false) return false;
 
     garrafa h;
     copiarPilha(&h, g);
