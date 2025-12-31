@@ -14,7 +14,9 @@ void inserirValores(garrafa *g);
 int main()
 {  
     do{
-    printf("INSIRA UM NUMERO ENTRE 3 E 7: ");
+    printf("\nINFORME O NUMERO DE GARRAFAS QUE DESEJA(entre 3 e 7): \n");
+    printf(">>  ");
+
     scanf("%d", &NUM_DE_PILHAS);
     MAX_SIZE = (NUM_DE_PILHAS - 1);
     }while(NUM_DE_PILHAS < 3 || NUM_DE_PILHAS > MAX_NUM_DE_PILHAS);
@@ -29,7 +31,7 @@ int main()
     
     gameMenu(g);
     
-    printf("GANHOU");
+    printf("GANHOU🎉🎉\n");
     return 0;
 }
 
