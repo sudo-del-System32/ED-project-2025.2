@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 #include "../Bibliotecas/garrafas.h"
 #include "../Bibliotecas/cor.h"
  
@@ -41,16 +42,25 @@ bool push(garrafa *g , char *cor){
     return true;
 }
 
-void desenhar(garrafa g[3]){
+void desenhar(garrafa g[3]) {
     printf("\n       ( 1 )            ( 2 )            ( 3 )\n");
     printf("       |   |            |   |            |   |\n");
+    
     for (int nivel = 2; nivel >= 0; nivel--) {
         for (int i = 0; i < 3; i++) {
+            printf("    |");
             if (nivel < g[i].qnt) {
-                printf("    |%9s|  ", g[i].cores[nivel]);
+                printf("%s", getColorCode(g[i].cores[nivel]));
+                int espacos_antes = (9 - strlen(g[i].cores[nivel])) / 2;
+                int espacos_depois = 9 - strlen(g[i].cores[nivel]) - espacos_antes;
+                for (int e = 0; e < espacos_antes; e++) printf(" ");
+                printf("%s", g[i].cores[nivel]);
+                for (int e = 0; e < espacos_depois; e++) printf(" ");
+                printf("%s", RESET);
             } else {
-                printf("    |         |  ");
+                printf("         "); 
             }
+            printf("|  ");
         }
         printf("\n");
         printf("    '---------'      '---------'      '---------'\n");

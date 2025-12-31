@@ -5,3 +5,6 @@
 #define ROSA         "\x1b[35m"
 #define CIANO        "\x1b[36m"
 #define RESET        "\x1b[0m"
+
+//Verifica a cor dos negocio
+const char* getColorCode(const char* nome_cor);
