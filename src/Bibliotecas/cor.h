@@ -8,7 +8,7 @@
 #define RESET        "\x1b[0m"
 
 //Função para conseguir o codigo da cor.
-const char* getColorCode(const char* nome_cor);
+const char* conseguirCor(const char* nome_cor);
 
 //Função de print do menu
 void desenhar(garrafa g[3]);

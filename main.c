@@ -2,42 +2,115 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include "src/Bibliotecas/useful.h"
+
 #include "src/Bibliotecas/garrafas.h"
 #include "src/Bibliotecas/cor.h"
 
-void hardCode(garrafa *g)
-{
-    push((g) , "verde");
-    push((g) , "azul");
-    push((g) , "amarelo");
-
-    push((g) + 1, "azul");
-    push((g) + 1, "amarelo");
-    push((g) + 1, "verde");
-
-}
+void hardCode(garrafa *g);
+void gameMenu(garrafa *g);
 
 
 int main()
 {
     garrafa g[3];
-
+    
     for(int i = 0; i < 3; i++){
         inicializar(&g[i]);
     }
-
+    
     hardCode(g);
     
-    int de;
-    int pra;
-    char corTemp[255];
+    gameMenu(g);
+    
+    return 0;
+}
 
-    while(true){
+
+void hardCode(garrafa *g)
+{
+    push(g , "verde");
+    push(g , "azul");
+    push(g , "amarelo");
+
+    push((g + 1), "azul");
+    push((g + 1), "amarelo");
+    push((g + 1), "verde");
+
+}
+
+
+void gameMenu(garrafa *g)
+{
+    int opcao;
+    bool opcaoValida = true, saida = false, erro = false;
+    
+
+    while(saida == false){
         desenhar(g);
-        printf("\n digite a origem e o destino (ex: 1 3) ou '0 0' para sair:\n ");
+        printf("\n Digite a origem e o destino (ex: 13) ou '00' para sair:\n ");
+        if(opcaoValida == false)
+        { 
+
+            if(vazia(&g[opcao/10 - 1])) printf("             Erro:A garrafa %d esta vazia", opcao/10);
+            else if (cheia(&g[opcao%10 - 1]))  printf("             Erro: A garrafa %d esta cheia", opcao%10);
+            else printf("\t\t Opcao invalida!\n\t\t Tente novamente");
+            
+            printf("\n");
+            opcaoValida = true;
+        }
+        
         printf(">> ");
-        if (scanf("%d %d", &de, &pra) != 2 || de == 0){
+        scanf("%d", &opcao);
+        bufferCleanner();
+        
+        switch(opcao)
+        {
+            
+            case 12:
+            case 13:    
+            case 21:
+            case 23:
+            case 31:
+            case 32:
+            
+            opcaoValida = false;
+            //Verificaçao se a garrafa pode dar ou receber a cor.
+            if (vazia(&g[opcao/10 - 1])) 
+            {
+                break;
+            }
+            else if (cheia(&g[opcao%10 - 1])) 
+            {
+                break;
+            }
+
+            opcaoValida = true;
+            tranferirCor(&g[opcao%10 - 1], &g[opcao/10 - 1]);
+
             break;
+            
+            //saida
+            case 00:
+            saida = true;
+            break;
+
+            default:
+                opcaoValida = false;
+        }
+    }
+
+}
+
+
+
+/*
+while(true){
+    desenhar(g);
+    printf("\n digite a origem e o destino (ex: 1 3) ou '0 0' para sair:\n ");
+    printf(">> ");
+    if (scanf("%d %d", &de, &pra) != 2 || de == 0){
+        break;
         } 
         de--;
         pra--;
@@ -55,5 +128,6 @@ int main()
             printf("\n Sscesso: Cor movidfa!\n ");
         }
     }
-    return 0;
-}
+
+
+*/

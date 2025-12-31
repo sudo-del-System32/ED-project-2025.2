@@ -24,7 +24,6 @@ void inicializar(garrafa *g)
 }
 
 
-
 bool push(garrafa *g , char cor[])
 {
  
@@ -36,7 +35,6 @@ bool push(garrafa *g , char cor[])
     
     return true;
 }
-
 
 
 char *pop(garrafa *g)
