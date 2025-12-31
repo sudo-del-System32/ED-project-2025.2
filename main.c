@@ -50,7 +50,7 @@ void hardCode(garrafa *g)
 void gameMenu(garrafa *g)
 {
     int opcao;
-    bool opcaoValida = true, saida = false, erro = false;
+    bool opcaoValida = true, saida = false;
     
 
     while(saida == false){
@@ -101,31 +101,3 @@ void gameMenu(garrafa *g)
         }
     }
 }
-
-
-/*
-while(true){
-    desenhar(g);
-    printf("\n digite a origem e o destino (ex: 1 3) ou '0 0' para sair:\n ");
-    printf(">> ");
-    if (scanf("%d %d", &de, &pra) != 2 || de == 0){
-        break;
-        } 
-        de--;
-        pra--;
-        if (de < 0 || de > 2 || pra < 0 || pra > 2) {
-            printf("\n opcao invalida\n");
-            continue;
-        }
-        if (vazia(&g[de])) {
-            printf("\n Erro: A garrafa %d esta vazia\n ", de + 1);
-        } else if (cheia(&g[pra])) {
-            printf("\n Erro: A garrafa %d esta cheia\n ", pra + 1);
-        } else {
-            strcpy(corTemp, pop(&g[de]));
-            push(&g[pra], corTemp);
-            printf("\n Sscesso: Cor movidfa!\n ");
-        }
-    }
-
-*/
