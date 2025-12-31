@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include "../Bibliotecas/garrafas.h"
  
+int NUM_DE_PILHAS, MAX_SIZE;
 
 bool vazia(garrafa *g)
 {
@@ -26,7 +27,6 @@ void inicializar(garrafa *g)
 
 void push(garrafa *g , char cor[])
 {
- 
     if(cheia(g)) return;
  
     g->top++;
@@ -45,6 +45,14 @@ char *pop(garrafa *g)
     g->qnt--;
     return g->cores[g->top--];
 }    
+
+
+
+char *peak(garrafa *g)
+{
+    return g->cores[g->top];
+}
+
 
 
 void tranferirCor(garrafa *g, garrafa *s)
@@ -70,4 +78,19 @@ void copiarPilha(garrafa *g, garrafa *s)
         push(g, cor[i]);
         push(s, cor[i]);
     }
+}
+
+bool itensIguais(garrafa *g)
+{
+    if(cheia(g) != true && vazia(g) != true) return false;
+
+    garrafa h;
+    copiarPilha(&h, g);
+    char *cor = peak(g);
+    while(strcmp(cor, pop(&h)) ==  0)
+    {
+        if(vazia(&h)) return true;
+    }
+
+    return false;
 }

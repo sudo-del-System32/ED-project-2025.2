@@ -4,30 +4,37 @@
 #include <stdbool.h>
 #include "src/Bibliotecas/useful.h"
 
-#include "src/Bibliotecas/garrafas.h"
-#include "src/Bibliotecas/cor.h"
 
-void hardCode(garrafa *g);
-void gameMenu(garrafa *g);
+#include "src/Bibliotecas/garrafas.h"
+#include "src/Bibliotecas/menu.h"
+
+void inserirValores(garrafa *g);
 
 
 int main()
-{
+{  
+    do{
+    printf("INSIRA UM NUMERO ENTRE 3 E 7: ");
+    scanf("%d", &NUM_DE_PILHAS);
+    MAX_SIZE = (NUM_DE_PILHAS - 1);
+    }while(NUM_DE_PILHAS < 3 || NUM_DE_PILHAS > MAX_NUM_DE_PILHAS);
+
     garrafa g[NUM_DE_PILHAS];
     
     for(int i = 0; i < NUM_DE_PILHAS; i++){
         inicializar(&g[i]);
     }
     
-    hardCode(g);
+    inserirValores(g);
     
     gameMenu(g);
     
+    printf("GANHOU");
     return 0;
 }
 
 
-void hardCode(garrafa *g)
+void inserirValores(garrafa *g)
 {
     for(int i = 0; i < NUM_DE_PILHAS - 1; i++)
     {
@@ -47,57 +54,3 @@ void hardCode(garrafa *g)
 }
 
 
-void gameMenu(garrafa *g)
-{
-    int opcao;
-    bool opcaoValida = true, saida = false;
-    
-
-    while(saida == false){
-        desenhar(g);
-        printf("\n Digite a origem e o destino (ex: 13) ou '00' para sair:\n ");
-        if(opcaoValida == false)
-        { 
-
-            if(vazia(&g[opcao/10 - 1])) printf("             Erro:A garrafa %d esta vazia", opcao/10);
-            else if (cheia(&g[opcao%10 - 1]))  printf("             Erro: A garrafa %d esta cheia", opcao%10);
-            else printf("\t\t Opcao invalida!\n\t\t Tente novamente");
-            
-            printf("\n");
-            opcaoValida = true;
-        }
-        
-        printf(">> ");
-        scanf("%d", &opcao);
-        bufferCleanner();
-        
-        while(true){
-            //saida
-            if(opcao == 00)     
-            {
-                saida = true;
-                break;
-            }       
-
-
-            opcaoValida = false;
-            //Verificaçao se a garrafa pode dar ou receber a cor.
-            if (vazia(&g[opcao/10 - 1])) 
-            {
-                break;
-            }
-            else if (cheia(&g[opcao%10 - 1])) 
-            {
-                break;
-            }
-            else if (opcao%10 < 1 || opcao%10 > NUM_DE_PILHAS || opcao/10 < 1 || opcao/10 > NUM_DE_PILHAS)
-            {
-                break;
-            }
-            
-            opcaoValida = true;
-            tranferirCor(&g[opcao%10 - 1], &g[opcao/10 - 1]);
-            break;
-        }
-    }
-}
