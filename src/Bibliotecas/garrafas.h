@@ -1,16 +1,41 @@
 
+#define MAX_NUM_DE_PILHAS 7 //Aguenta entre 3 e 7
+#define MAX_SIZE_CORES (MAX_NUM_DE_PILHAS - 1)
+extern int NUM_DE_PILHAS, MAX_SIZE;
+
+
 typedef struct garrafa{
 
-  char cores[3][255];
+  char cores[MAX_SIZE_CORES][255];
   int top;
   int qnt;
 
 }garrafa;
 
-#define MAX_SIZE 3;
 
-//Funçao de verificar se a garrafa esta vazia.
+//Funçao de verificar se a pilha esta vazia.
 bool vazia(garrafa *g);
+
+//Função pra verifica se a pilha esta cheia.
+bool cheia(garrafa *g);
+
+//Inicializa uma garrafa.
+void inicializar(garrafa *g); 
+
+//Função pra adicionar um item, retorna se funcionou ou nao.
+void push(garrafa *g , char cor[]);
 
 //Funçao de retirar um item, retorna o item retirado.
 char *pop(garrafa *g);
+
+//Permite ver o primeiro item da pilha sem retira-lo.
+char *peak(garrafa *g);
+
+//Retira um item de s e coloca-o em g.
+void tranferirCor(garrafa *g, garrafa *s);
+
+//Copia uma pilha em outra, com o conceito de pilha intactio :) .
+void copiarPilha(garrafa *g, garrafa *s);
+
+//Verifica se todos os itens da pilha são iguais;
+bool itensIguais(garrafa *g);
