@@ -1,32 +1,43 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
-
 #include "../Bibliotecas/garrafas.h"
+ 
 
-#define MAX_SIZE 3;
-
-bool vazia(garrafa *s)
+bool vazia(garrafa *g)
 {
-    if(s->qnt != 0) return false; // False, esta vazia.
+    if(g->qnt != 0) return false; // False, esta vazia.
 
     return true; // True, não esta vazia.
 }
 
-bool cheia(garrafa *s)
+bool cheia(garrafa *g)
 {
-    return s->qnt == MAX_SIZE;
+    return g->qnt == MAX_SIZE;
 }
 
 
 
-char *pop(garrafa *s)
+char *pop(garrafa *g)
 {
-    if(vazia(s)){
+    if(vazia(g)){
          printf("A garrafa esta vazia!\n");
         return "\0";
     }
-    s->qnt--;
-    return s->cores[s->top--];
+
+    g->qnt--;
+    return g->cores[g->top--];
+}
+
+bool push(garrafa *g , char *cor){
+ 
+    if(cheia(g)) return false;
+ 
+    g->top++;
+    g->qnt++;
+    strcpy(g->cores[g->top],cor);
+    
+    return true;
 }
 
 
