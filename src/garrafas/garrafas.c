@@ -7,9 +7,9 @@
 
 bool vazia(garrafa *g)
 {
-    if(g->qnt != 0) return false; // False, esta vazia.
+    if(g->qnt != 0) return false; // False, não esta vazia.
 
-    return true; // True, não esta vazia.
+    return true; // True, esta vazia.
 }
 
 bool cheia(garrafa *g)
@@ -24,16 +24,15 @@ void inicializar(garrafa *g)
 }
 
 
-bool push(garrafa *g , char cor[])
+void push(garrafa *g , char cor[])
 {
  
-    if(cheia(g)) return false;
+    if(cheia(g)) return;
  
     g->top++;
     g->qnt++;
     strcpy(g->cores[g->top],cor);
     
-    return true;
 }
 
 
@@ -48,7 +47,27 @@ char *pop(garrafa *g)
 }    
 
 
-bool tranferirCor(garrafa *g, garrafa *s)
+void tranferirCor(garrafa *g, garrafa *s)
 {
     return push(g, pop(s));
+}
+
+void copiarPilha(garrafa *g, garrafa *s)
+{
+    int qnt = s->qnt;
+    g->qnt = 0;
+    g->top = -1;
+    
+    char cor[s->qnt][255];
+
+    for(int i = 0; i < qnt; i++)
+    {
+        strcpy(cor[i], pop(s));
+    }
+    
+    for(int i = qnt - 1; i >= 0; i--)
+    {
+        push(g, cor[i]);
+        push(s, cor[i]);
+    }
 }

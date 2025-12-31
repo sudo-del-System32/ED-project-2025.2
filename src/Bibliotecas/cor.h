@@ -11,4 +11,4 @@
 const char* conseguirCor(const char* nome_cor);
 
 //Função de print do menu
-void desenhar(garrafa g[3]);
+void desenhar(garrafa *g);

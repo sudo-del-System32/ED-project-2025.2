@@ -13,9 +13,9 @@ void gameMenu(garrafa *g);
 
 int main()
 {
-    garrafa g[3];
+    garrafa g[NUM_DE_PILHAS];
     
-    for(int i = 0; i < 3; i++){
+    for(int i = 0; i < NUM_DE_PILHAS; i++){
         inicializar(&g[i]);
     }
     
@@ -29,14 +29,21 @@ int main()
 
 void hardCode(garrafa *g)
 {
-    push(g , "verde");
-    push(g , "azul");
-    push(g , "amarelo");
+    for(int i = 0; i < NUM_DE_PILHAS - 1; i++)
+    {
+        push(g + i, "azul");
+        push(g + i, "amarelo");
+        push(g + i, "verde");
+        push(g + i, "vermelho");
+        push(g + i, "rosa");
+        push(g + i, "ciano");
+        (g + i)->qnt = MAX_SIZE;    
+        (g + i)->top = MAX_SIZE - 1;    
+    }
 
-    push((g + 1), "azul");
-    push((g + 1), "amarelo");
-    push((g + 1), "verde");
-
+    (g + NUM_DE_PILHAS)->qnt = 0;    
+    (g + NUM_DE_PILHAS)->top = -1;    
+    
 }
 
 
@@ -64,16 +71,15 @@ void gameMenu(garrafa *g)
         scanf("%d", &opcao);
         bufferCleanner();
         
-        switch(opcao)
-        {
-            
-            case 12:
-            case 13:    
-            case 21:
-            case 23:
-            case 31:
-            case 32:
-            
+        while(true){
+            //saida
+            if(opcao == 00)     
+            {
+                saida = true;
+                break;
+            }       
+
+
             opcaoValida = false;
             //Verificaçao se a garrafa pode dar ou receber a cor.
             if (vazia(&g[opcao/10 - 1])) 
@@ -84,24 +90,17 @@ void gameMenu(garrafa *g)
             {
                 break;
             }
-
+            else if (opcao%10 < 1 || opcao%10 > NUM_DE_PILHAS || opcao/10 < 1 || opcao/10 > NUM_DE_PILHAS)
+            {
+                break;
+            }
+            
             opcaoValida = true;
             tranferirCor(&g[opcao%10 - 1], &g[opcao/10 - 1]);
-
             break;
-            
-            //saida
-            case 00:
-            saida = true;
-            break;
-
-            default:
-                opcaoValida = false;
         }
     }
-
 }
-
 
 
 /*
@@ -128,6 +127,5 @@ while(true){
             printf("\n Sscesso: Cor movidfa!\n ");
         }
     }
-
 
 */
