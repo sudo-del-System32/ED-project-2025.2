@@ -1,5 +1,5 @@
 
-#define NUM_DE_PILHAS 4
+#define NUM_DE_PILHAS 7 //Aguenta entre 3 e 7
 #define MAX_SIZE (NUM_DE_PILHAS - 1)
 
 
