@@ -5,22 +5,29 @@
 #include "src/Bibliotecas/garrafas.h"
 #include "src/Bibliotecas/cor.h"
 
+void hardCode(garrafa *g)
+{
+    push((g) , "verde");
+    push((g) , "azul");
+    push((g) , "amarelo");
+
+    push((g) + 1, "azul");
+    push((g) + 1, "amarelo");
+    push((g) + 1, "verde");
+
+}
+
 
 int main()
 {
     garrafa g[3];
+
     for(int i = 0; i < 3; i++){
         inicializar(&g[i]);
     }
 
-    push(&g[0] , "verde");
-    push(&g[0] , "azul");
-    push(&g[0] , "amarelo");
-
-    push(&g[1] , "azul");
-    push(&g[1] , "amarelo");
-    push(&g[1] , "verde");
-
+    hardCode(g);
+    
     int de;
     int pra;
     char corTemp[255];

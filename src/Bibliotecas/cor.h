@@ -1,3 +1,4 @@
+//Definições para que o menu tenha cor no terminal.
 #define VERMELHO     "\x1b[31m"
 #define VERDE        "\x1b[32m"
 #define AZUL         "\x1b[34m"
@@ -6,5 +7,8 @@
 #define CIANO        "\x1b[36m"
 #define RESET        "\x1b[0m"
 
-//Verifica a cor dos negocio
+//Função para conseguir o codigo da cor.
 const char* getColorCode(const char* nome_cor);
+
+//Função de print do menu
+void desenhar(garrafa g[3]);
