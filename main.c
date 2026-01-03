@@ -14,11 +14,13 @@ void inserirValores(garrafa *g);
 int main()
 {  
     do{
-    printf("\nINFORME O NUMERO DE GARRAFAS QUE DESEJA(entre 3 e 7): \n");
-    printf(">>  ");
+        printf("\nINFORME O NUMERO DE GARRAFAS QUE DESEJA(entre 3 e 7): \n");
+        printf(">>  ");
 
-    scanf("%d", &NUM_DE_PILHAS);
-    MAX_SIZE = (NUM_DE_PILHAS - 1);
+        scanf("%d", &NUM_DE_PILHAS);
+        bufferCleanner();
+        
+        MAX_SIZE = (NUM_DE_PILHAS - 1);
     }while(NUM_DE_PILHAS < 3 || NUM_DE_PILHAS > MAX_NUM_DE_PILHAS);
 
     garrafa g[NUM_DE_PILHAS];
@@ -29,9 +31,10 @@ int main()
     
     inserirValores(g);
     
-    gameMenu(g);
+    bool ganhou = gameMenu(g);
     
-    printf("\nGANHOU🎉🎉\n");
+    if (ganhou == true) printf("\nGANHOU🎉🎉\n");
+    else printf("SAIU DO JOGO\n");
     return 0;
 }
 

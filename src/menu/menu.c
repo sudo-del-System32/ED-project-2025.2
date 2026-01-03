@@ -66,7 +66,7 @@ void desenhar(garrafa s[])
 
 
 
-void gameMenu(garrafa *g)
+bool gameMenu(garrafa *g)
 {
     int opcao;
     bool opcaoValida = true, saida = false, possivelErroDeSegmento = false;
@@ -81,7 +81,7 @@ void gameMenu(garrafa *g)
                 saida = itensIguais(&g[i]);
                 if(saida == false) break;
             }
-            if(saida == true) break;
+            if(saida == true) return true;
         }
 
 
@@ -108,7 +108,7 @@ void gameMenu(garrafa *g)
             if(opcao == 00 )     
             {
                 saida = true;
-                break;
+                return false;
             }       
 
 
