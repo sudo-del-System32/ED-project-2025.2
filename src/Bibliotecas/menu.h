@@ -18,6 +18,3 @@ void printfVezes(const char *str, int numVezes);
 
 //Função do menu do jogo.
 bool gameMenu(garrafa *g);
-
-//Imprime um emoji de ✅.
-void simboloDeCorreto();
