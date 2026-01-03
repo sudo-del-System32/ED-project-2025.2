@@ -16,3 +16,5 @@ gcc temp/*.o -o ./main.exe
 
 ```
 
+Acesse o jogo sem instalar usando o online gdb no link abaixo:
+https://onlinegdb.com/VjFkaqVv0
