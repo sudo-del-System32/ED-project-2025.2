@@ -1,4 +1,4 @@
-#define LinuxDistro
+
 
 void correctString(char *str);
 

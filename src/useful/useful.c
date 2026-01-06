@@ -11,10 +11,10 @@ void correctString(char *str)
 
 void clean()
 {
-    #ifdef LinuxDistro
-    system("clear");
-    #elif
+    #ifdef _WIN32
     system("cls");
+    #else
+    system("clear");
     #endif
 }
 
